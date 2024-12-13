@@ -16,11 +16,15 @@ Le projet "Dice" est une application construite avec Spring Boot permettant de s
 ### 2. Configuration du projet
 - Configurez l'application pour qu'elle utilise le port **8081**.
 - Donnez un nom (**dice**) au projet dans le fichier de configuration :
-  - Utilisez **`application.properties`** ou **`application.yml`** selon votre préférence.
+- Utilisez **`application.properties`** présent dans /src/main/ressources/.
+
 
 ### 3. Création de la classe `Dice`
 - Implémentez une classe représentant un dé avec les méthodes nécessaires pour effectuer un lancé.
 - Marquez cette classe avec l'annotation `@Component` pour pouvoir l'injecter au besoin.
+
+#### j'ai créé un répo supplémentaire pour la classe Dice nommé Service.
+ - la classe est présente dans /src/main/java/fr.unice.miage.tille.dice/service/Dice.java
 
 ### 4. Création de l'entité `DiceRollLog`
 - Modélisez une entité JPA `DiceRollLog` comprenant les champs suivants :
@@ -30,8 +34,15 @@ Le projet "Dice" est une application construite avec Spring Boot permettant de s
   - **`timestamp`** : Horodatage du lancé.
 - Utilisez des annotations JPA comme `@Entity`, `@Id`, `@GeneratedValue`, etc.
 
+#### j'ai créé un répo supplémentaire pour la classe DiceRollLog nommé entity.
+- la classe est présente dans /src/main/java/fr.unice.miage.tille.dice/entity/DiceRollLog.java
+
+
 ### 5. Création du `Repository`
 - Implémentez une interface héritant de `JpaRepository<DiceRollLog, Long>` pour gérer les interactions avec la base de données.
+
+#### j'ai ajouté cette interface dans le repo entity.
+- l'interface' est présente dans /src/main/java/fr.unice.miage.tille.dice/entity/DiceRollLogRepository.java
 
 ### 6. Création du contrôleur REST pour lancer les dés
 - Implémentez un contrôleur REST annoté avec `@RestController`.
@@ -39,11 +50,20 @@ Le projet "Dice" est une application construite avec Spring Boot permettant de s
   - **`GET /rollDice`** : Lancer un seul dé.
   - **`GET /rollDices/{X}`** : Lancer X dés (X étant un paramètre dynamique).
 
+#### Pour Tester les lancers de dé : http://localhost:8081/rollDices/{nombre_de_roll}
+- exemple : http://localhost:8081/rollDices/5
+
+- j'ai créé un répo supplémentaire pour la classe DiceController nommé controller.
+- la classe est présente dans /src/main/java/fr.unice.miage.tille.dice/controller/DiceController.java
+
 ### 7. Création du `Service`
 - Créez un service marqué avec `@Service` contenant une méthode :
   - Prend en paramètre le nombre de dés à lancer.
   - Retourne les résultats des lancés au contrôleur.
   - Enregistre l’historique des lancés dans la base via le `Repository`.
+
+#### j'ai créé un répo supplémentaire pour la classe DiceService nommé service.
+- la classe est présente dans /src/main/java/fr.unice.miage.tille.dice/service/DiceService.java
 
 ### 8. Contrôleur pour afficher les historiques
 - Ajoutez un autre contrôleur REST permettant d'afficher l'historique des lancés :
@@ -53,6 +73,8 @@ Le projet "Dice" est une application construite avec Spring Boot permettant de s
 - Démarrez l'application et testez les endpoints.
 - Vérifiez les résultats dans la base de données et les réponses JSON.
 
+
+
 ### 10. (Bonus) Ajout de fonctionnalités avancées
 - **Swagger** :
   - Ajoutez la dépendance Swagger/OpenAPI.
@@ -60,6 +82,11 @@ Le projet "Dice" est une application construite avec Spring Boot permettant de s
   - Accédez à la documentation sur **`http://localhost:8081/swagger-ui.html`**.
 - **Lombok** :
   - Utilisez Lombok pour simplifier les getters, setters et constructeurs de vos entités.
+
+#### Pour ouvrir la documentation swagger sur un navigateur
+http://localhost:8081/swagger-ui/index.html#/
+
+
 
 ---
 
