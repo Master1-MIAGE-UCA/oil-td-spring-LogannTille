@@ -50,7 +50,8 @@ Le projet "Dice" est une application construite avec Spring Boot permettant de s
   - **`GET /rollDice`** : Lancer un seul dé.
   - **`GET /rollDices/{X}`** : Lancer X dés (X étant un paramètre dynamique).
 
-#### Pour Tester les lancers de dé : http://localhost:8081/rollDices/{nombre_de_roll}
+#### Pour Tester les lancers d'un seul dé : http://localhost:8081/rollDice
+#### Pour Tester les lancers de plusieurs dés : http://localhost:8081/rollDices/{nombre_de_roll}
 - exemple : http://localhost:8081/rollDices/5
 
 - j'ai créé un répo supplémentaire pour la classe DiceController nommé controller.
