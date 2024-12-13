@@ -9,17 +9,35 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Un service qui permet de lancer un dé.
+ */
 @Service
 public class DiceService {
 
+    /**
+     * Un dé à 6 faces.
+     */
     @Autowired
     private Dice dice;
 
+    /**
+     * Un repository pour les logs de lancers de dés.
+     */
     @Autowired
     private DiceRollLogRepository diceRollLogRepository;
 
+    /**
+     * Lance un dé un nombre de fois donné.
+     * @param diceCount
+     * @return
+     */
     public List<Integer> rollDices(int diceCount) {
         List<Integer> results = new ArrayList<>();
+        /**
+         * boucle pour lancer le dé un nombre de fois donné
+         */
         for (int i = 0; i < diceCount; i++) {
             results.add(dice.roll());
         }
@@ -27,6 +45,11 @@ public class DiceService {
         return results;
     }
 
+    /**
+     * Sauvegarde le log d'un lancer de dés.
+     * @param diceCount
+     * @param results
+     */
     private void saveDiceRollLog(int diceCount, List<Integer> results) {
         DiceRollLog log = new DiceRollLog();
         log.setDiceCount(diceCount);

@@ -3,6 +3,10 @@ package fr.unica.miage.tille.dice.service;
 import org.springframework.stereotype.Component;
 import java.util.Random;
 
+
+/**
+ * Une classe qui simule un dé à 6 faces.
+ */
 @Component
 public class Dice {
     private final Random random;

@@ -13,15 +13,29 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Controller pour le lancer de dés
+ */
 @RestController
 public class DiceController {
 
+    /**
+     * annotation pour injecter le bean Dice
+     */
     @Autowired
     private Dice dice;
 
+    /**
+     * annotation pour injecter le bean DiceRollLogRepository
+     */
     @Autowired
     private DiceRollLogRepository diceRollLogRepository;
 
+    /**
+     * Lancer un dé, utiliser le bean Dice pour générer un nombre aléatoire
+     * @return
+     */
     @GetMapping("/rollDice")
     public int rollDice() {
         int result = dice.roll();
@@ -29,9 +43,17 @@ public class DiceController {
         return result;
     }
 
+    /**
+     * Lancer X dés, utiliser le bean Dice pour générer X nombres aléatoires
+     * @param X
+     * @return
+     */
     @GetMapping("/rollDices/{X}")
     public List<Integer> rollDices(@PathVariable int X) {
         List<Integer> results = new ArrayList<>();
+        /**
+         * Lancer X dés
+         */
         for (int i = 0; i < X; i++) {
             results.add(dice.roll());
         }
@@ -39,6 +61,11 @@ public class DiceController {
         return results;
     }
 
+    /**
+     * Sauvegarder le lancer de dés dans la base de données
+     * @param diceCount
+     * @param results
+     */
     private void saveDiceRollLog(int diceCount, List<Integer> results) {
         DiceRollLog log = new DiceRollLog();
         log.setDiceCount(diceCount);
