@@ -4,6 +4,14 @@
 ## Description
 Le projet "Dice" est une application construite avec Spring Boot permettant de simuler des lancés de dés et de gérer un historique des résultats en base de données. Ce projet met en œuvre les concepts fondamentaux de Spring Boot, notamment l'injection de dépendances, les services RESTful, les entités JPA et les repositories.
 
+# Pour lancer le projet, il faut se rentre dans le dossier dice et lancer la commande suivante :
+```bash 
+mvn spring-boot:run
+```
+Pour lancer un seul dé, il faut suivre le lien suivant : http://localhost:8081/rollDice
+Pour lancer plusieurs dés, il faut suivre le lien suivant : http://localhost:8081/rollDices/{nombre_de_roll}
+Il faut ensuite suivre le lien suivant pour accéder à la documentation swagger : http://localhost:8081/swagger-ui/index.html#/
+
 
 ## Étapes de réalisation
 
